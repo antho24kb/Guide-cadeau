@@ -3,24 +3,32 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark">
 <title>Steelbooks 4K à venir</title>
 <meta name="description" content="Les prochains steelbooks 4K : dates de sortie en France et liens vers les précommandes.">
 <style>
-:root{--bg:#faf7f2;--fg:#1d1b19;--muted:#6b645c;--card:#fff;--accent:#c2410c;--line:#e8e1d6}
-@media (prefers-color-scheme:dark){:root{--bg:#171513;--fg:#f2ede6;--muted:#a79e92;--card:#221f1c;--accent:#fb923c;--line:#37322d}}
+:root{--bg:#0c0b10;--fg:#f4efe6;--muted:#a49cae;--card:#17151f;--accent:#e7b96a;--line:#2a2633}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.55 Georgia,"Times New Roman",serif}
-main{max-width:720px;margin:0 auto;padding:32px 16px 64px}
-h1{font-size:2rem;line-height:1.15;margin:0 0 8px}
-.lead{color:var(--muted);margin:0 0 20px}
-.notice{font:14px/1.45 system-ui,sans-serif;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:0 0 28px;color:var(--muted)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:0 0 16px}
-.card h2{font-size:1.25rem;margin:0 0 6px}
-.card p{margin:0 0 12px}
-.tag{font:12px system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:var(--accent)}
-.btn{display:inline-block;font:600 15px system-ui,sans-serif;background:var(--accent);color:#fff;text-decoration:none;padding:10px 16px;border-radius:999px}
-.btn+.btn{margin-left:8px;background:transparent;color:var(--accent);border:1px solid var(--accent)}
-footer{font:13px/1.5 system-ui,sans-serif;color:var(--muted);margin-top:32px;border-top:1px solid var(--line);padding-top:16px}
+html{background:var(--bg)}
+body{margin:0;color:var(--fg);font:16px/1.5 -apple-system,"Avenir Next",system-ui,sans-serif;background:radial-gradient(900px 420px at 80% -80px,#3a1d5c55,transparent 70%),radial-gradient(700px 380px at -10% 0,#7a2e0f44,transparent 70%),var(--bg);background-repeat:no-repeat}
+main{max-width:720px;margin:0 auto;padding:28px 16px 64px}
+h1{font-size:2.3rem;line-height:1.05;margin:0 0 10px;font-weight:800;letter-spacing:-.02em;background:linear-gradient(100deg,#fff 20%,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
+h1:before{content:"4K ULTRA HD";display:block;font-size:.72rem;letter-spacing:.22em;color:var(--accent);-webkit-text-fill-color:var(--accent);margin-bottom:10px}
+.lead{color:var(--muted);margin:0 0 18px;font-size:1.02rem}
+.notice{font-size:13px;line-height:1.45;background:#ffffff08;border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin:0 0 8px;color:var(--muted)}
+main>h2{font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:34px 0 14px!important;display:flex;align-items:center;gap:12px}
+main>h2:after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.card{--h:28;position:relative;display:grid;grid-template-columns:78px 1fr;grid-template-areas:"p t" "p h" "p x" "p b";column-gap:16px;align-items:start;background:linear-gradient(160deg,#1d1a27,#13111a);border:1px solid var(--line);border-radius:18px;padding:16px;margin:0 0 14px;box-shadow:0 10px 30px #0006;overflow:hidden}
+.card:before{content:"4K";grid-area:p;width:78px;height:112px;border-radius:7px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:10px;font-weight:800;font-size:.8rem;letter-spacing:.14em;color:#ffffffcc;background:linear-gradient(115deg,#ffffff00 30%,#ffffff40 48%,#ffffff00 66%),linear-gradient(170deg,hsl(var(--h) 70% 46%),hsl(calc(var(--h) + 40) 60% 16%));box-shadow:inset 0 0 0 1px #ffffff30,inset 3px 0 0 #00000040,0 8px 18px #0008}
+.card:nth-of-type(6n+1){--h:28}.card:nth-of-type(6n+2){--h:268}.card:nth-of-type(6n+3){--h:352}.card:nth-of-type(6n+4){--h:200}.card:nth-of-type(6n+5){--h:42}.card:nth-of-type(6n){--h:150}
+.tag{grid-area:t;justify-self:start;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#1a1208;background:var(--accent);padding:3px 10px;border-radius:99px;margin-bottom:8px}
+.card h2{grid-area:h;font-size:1.15rem;line-height:1.2;margin:0 0 4px;font-weight:750}
+.card p{grid-area:x;margin:0 0 12px;color:var(--muted);font-size:.93rem}
+.btn{grid-area:b;justify-self:start;display:inline-block;font-weight:700;font-size:15px;background:linear-gradient(120deg,#f0c27a,#e08a3c);color:#1a1208;text-decoration:none;padding:10px 18px;border-radius:999px;box-shadow:0 6px 16px #e08a3c44}
+.btn:active{opacity:.85}
+.btn:after{content:" \203A"}
+footer{font-size:13px;line-height:1.5;color:var(--muted);margin-top:36px;border-top:1px solid var(--line);padding-top:16px}
+footer a{color:var(--accent)}
 </style>
 </head>
 <body>
