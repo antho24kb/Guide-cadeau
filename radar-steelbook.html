@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radar Steelbook</title>
+<style>
+  :root{--fond:#f6efe0;--encre:#2a2118;--rouge:#d9411e;--trait:#d8cdb4;--carte:#fffaf0}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--fond);color:var(--encre);font-family:Georgia,"Times New Roman",serif;line-height:1.45}
+  header{text-align:center;padding:28px 16px 12px;border-bottom:3px double var(--encre);margin:0 16px}
+  h1{margin:0;font-size:30px;letter-spacing:2px;text-transform:uppercase}
+  header p{margin:6px 0 0;font-style:italic}
+  main{max-width:640px;margin:0 auto;padding:16px}
+  .alertes{background:var(--carte);border:2px solid var(--encre);padding:16px;text-align:center;margin-bottom:20px}
+  .alertes h2{margin:0 0 6px;font-size:20px}
+  .alertes a.bouton{display:inline-block;margin-top:10px}
+  .mois{font-weight:bold;font-size:20px;border-bottom:1px solid var(--encre);margin:24px 0 8px;text-transform:capitalize}
+  .sb{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--carte);border:1px solid var(--trait);padding:12px;margin-bottom:8px}
+  .sb .date{font-size:13px;color:#6b5d48}
+  .sb .titre{font-weight:bold}
+  a.bouton{background:var(--rouge);color:#fff;text-decoration:none;padding:10px 14px;font-family:Arial,sans-serif;font-size:14px;font-weight:bold;border-radius:4px;white-space:nowrap}
+  .vide{text-align:center;font-style:italic;padding:24px}
+  footer{text-align:center;font-size:12px;color:#6b5d48;padding:20px 16px 40px}
+</style>
+</head>
+<body>
+<header>
+  <h1>Radar Steelbook</h1>
+  <p>Les sorties steelbook 4K, par date</p>
+</header>
+<main>
+
+  <section class="alertes">
+    <h2>Reçois les alertes de précommande</h2>
+    <p>Un e-mail dès qu'un steelbook ouvre en précommande.</p>
+    <iframe width="540" height="305" src="https://9158ec83.sibforms.com/v2/serve/MUIFAHd_Pk6CYkitmG2by5JsGAX_0h4N7ZXpTpwc_811hQqPBlmaREkqZTfI3GX3WssUDNS8qx5RWtOLVXAUDL3EazOBmNRvYNXHjc_vgvu9K88IEWpQkBTpVZjNoCqY95K4H0JItbeHBVe6XFlu5VJLwJzZ8SoLJusC4ay3NBLYjQsmt4OUqHbLCs8d4BHGYOX8S-4UsbHbRiPFlQ==" frameborder="0" scrolling="auto" allowfullscreen style="display:block;margin:10px auto 0;max-width:100%;"></iframe>
+  </section>
+
+  <div id="liste"></div>
+
+</main>
+<footer>
+  En tant que Partenaire Amazon, je réalise un bénéfice sur les achats remplissant les conditions requises.
+</footer>
+
+<script>
+/* Pour ajouter un steelbook : copie une ligne, change la date (AAAA-MM-JJ), le titre et le lien Amazon (avec ton tag). */
+const STEELBOOKS = [
+  { date: "2026-11-04", titre: "Autant en emporte le vent", lien: "https://www.amazon.fr/dp/B0H9ZLF81Y?tag=antho24kb-21" },
+  { date: "2026-11-04", titre: "Coffret Horreur 80's", lien: "https://www.amazon.fr/dp/B0HJ6LR5SZ?tag=antho24kb-21" },
+  { date: "2026-11-04", titre: "La Petite Boutique des horreurs", lien: "https://www.amazon.fr/dp/B0H6XLD84P?tag=antho24kb-21" },
+  { date: "2026-11-04", titre: "Supergirl", lien: "https://www.amazon.fr/dp/B0H6XNWTVQ?tag=antho24kb-21" },
+  { date: "2026-11-04", titre: "Godzilla Minus One", lien: "https://www.amazon.fr/dp/B0HHK39LWS?tag=antho24kb-21" },
+  { date: "2026-11-04", titre: "Disjoncté", lien: "https://www.amazon.fr/dp/B0H773SBRM?tag=antho24kb-21" },
+  { date: "2026-11-04", titre: "Harry Potter (coffret 8 films)", lien: "https://www.amazon.fr/dp/B0HDQRT2R5?tag=antho24kb-21" },
+  { date: "2026-11-04", titre: "Retour vers le futur (trilogie)", lien: "https://www.amazon.fr/dp/B0HFYLDLSW?tag=antho24kb-21" },
+  { date: "2026-11-04", titre: "Game of Thrones (coffret 8 steelbooks)", lien: "https://www.amazon.fr/dp/B0GXLFVBPZ?tag=antho24kb-21" },
+  { date: "2026-11-11", titre: "Le Cercle des poètes disparus", lien: "https://www.amazon.fr/dp/B0HH13QP2Q?tag=antho24kb-21" },
+  { date: "2026-11-11", titre: "Vaiana", lien: "https://www.amazon.fr/dp/B0HJ6P9MHG?tag=antho24kb-21" },
+  { date: "2026-11-12", titre: "Evil Dead Burn", lien: "https://www.amazon.fr/dp/B0HFKT2F6Q?tag=antho24kb-21" },
+  { date: "2026-11-18", titre: "L'Odyssée", lien: "https://www.amazon.fr/dp/B0HMY41Z9K?tag=antho24kb-21" },
+  { date: "2026-11-18", titre: "Les Ailes de l'enfer", lien: "https://www.amazon.fr/dp/B0HLGX3TZ3?tag=antho24kb-21" },
+  { date: "2026-11-18", titre: "High Society", lien: "https://www.amazon.fr/dp/B0H8CQPLYD?tag=antho24kb-21" },
+  { date: "2026-11-18", titre: "Le Bon, la Brute et le Truand", lien: "https://www.amazon.fr/dp/B0H5XGB5MW?tag=antho24kb-21" },
+  { date: "2026-11-25", titre: "Scary Movie", lien: "https://www.amazon.fr/dp/B0HFKSR75T?tag=antho24kb-21" },
+  { date: "2026-11-25", titre: "Rocky", lien: "https://www.amazon.fr/dp/B0HFYLWR9S?tag=antho24kb-21" },
+  { date: "2026-11-25", titre: "Hook", lien: "https://www.amazon.fr/dp/B0HJRYSXDQ?tag=antho24kb-21" },
+  { date: "2026-11-25", titre: "Benjamin Gates et le trésor des templiers", lien: "https://www.amazon.fr/dp/B0HLHB1445?tag=antho24kb-21" },
+  { date: "2026-12-01", titre: "L'Oeuf de l'ange", lien: "https://www.amazon.fr/s?k=L%20Oeuf%20de%20l%20ange%204K%20steelbook&tag=antho24kb-21" },
+  { date: "2026-12-02", titre: "House of the Dragon, saison 3", lien: "https://www.amazon.fr/s?k=House%20of%20the%20Dragon%20saison%203%204K%20steelbook&tag=antho24kb-21" },
+  { date: "2026-12-02", titre: "Le Dernier Combat", lien: "https://www.amazon.fr/s?k=Le%20Dernier%20Combat%204K%20steelbook&tag=antho24kb-21" },
+  { date: "2026-12-02", titre: "Shrek", lien: "https://www.amazon.fr/s?k=Shrek%204K%20steelbook&tag=antho24kb-21" },
+  { date: "2026-12-02", titre: "The Crow", lien: "https://www.amazon.fr/s?k=The%20Crow%204K%20steelbook&tag=antho24kb-21" },
+  { date: "2026-12-09", titre: "Le Seigneur des anneaux : Les Anneaux de Pouvoir, saison 1", lien: "https://www.amazon.fr/s?k=Les%20Anneaux%20de%20Pouvoir%20saison%201%204K%20steelbook&tag=antho24kb-21" },
+  { date: "2026-12-09", titre: "Le Seigneur des anneaux : Les Anneaux de Pouvoir, saison 2", lien: "https://www.amazon.fr/s?k=Les%20Anneaux%20de%20Pouvoir%20saison%202%204K%20steelbook&tag=antho24kb-21" },
+  { date: "2026-12-09", titre: "Trainspotting", lien: "https://www.amazon.fr/s?k=Trainspotting%204K%20steelbook&tag=antho24kb-21" },
+  { date: "2026-12-11", titre: "Princesse Mononoké", lien: "https://www.amazon.fr/s?k=Princesse%20Mononoke%204K%20steelbook&tag=antho24kb-21" },
+  { date: "2026-12-16", titre: "Spider-Man : Brand New Day (steelbook B)", lien: "https://www.amazon.fr/s?k=Spider-Man%20Brand%20New%20Day%204K%20steelbook&tag=antho24kb-21" },
+  { date: "2026-12-16", titre: "Piège de cristal", lien: "https://www.amazon.fr/s?k=Piege%20de%20cristal%204K%20steelbook&tag=antho24kb-21" },
+  { date: "2026-12-16", titre: "A.I. Intelligence artificielle", lien: "https://www.amazon.fr/s?k=A.I.%20Intelligence%20artificielle%204K%20steelbook&tag=antho24kb-21" },
+  { date: "2026-12-16", titre: "La Fin d'Oak Street", lien: "https://www.amazon.fr/s?k=La%20Fin%20d%20Oak%20Street%204K%20steelbook&tag=antho24kb-21" },
+  { date: "2026-12-21", titre: "Terminator", lien: "https://www.amazon.fr/dp/B0HNPYZWTY?tag=antho24kb-21" },
+  { date: "2027-01-13", titre: "58 minutes pour vivre", lien: "https://www.amazon.fr/s?k=58%20minutes%20pour%20vivre%204K%20steelbook&tag=antho24kb-21" },
+  { date: "2027-01-22", titre: "Resident Evil (2026)", lien: "https://www.amazon.fr/s?k=Resident%20Evil%202026%204K%20steelbook&tag=antho24kb-21" },
+  { date: "2027-01-27", titre: "Une journée en enfer", lien: "https://www.amazon.fr/s?k=Une%20journee%20en%20enfer%204K%20steelbook&tag=antho24kb-21" },
+  { date: "2027-01-27", titre: "Les Ensorceleuses 2", lien: "https://www.amazon.fr/s?k=Les%20Ensorceleuses%202%204K%20steelbook&tag=antho24kb-21" },
+  { date: "2027-02-11", titre: "Street Fighter (2026), steelbook Héros", lien: "https://www.amazon.fr/s?k=Street%20Fighter%202026%204K%20steelbook%20Heros&tag=antho24kb-21" },
+  { date: "2027-02-11", titre: "Street Fighter (2026), steelbook Vilains", lien: "https://www.amazon.fr/s?k=Street%20Fighter%202026%204K%20steelbook%20Vilains&tag=antho24kb-21" },
+  { date: "2027-02-11", titre: "Avatar : Le Dernier maître de l'air", lien: "https://www.amazon.fr/s?k=Avatar%20Aang%20Le%20Dernier%20maitre%20de%20l%20air%204K%20steelbook&tag=antho24kb-21" },
+  { date: "2027-02-24", titre: "Clayface", lien: "https://www.amazon.fr/dp/B0HNPNF6KR?tag=antho24kb-21" },
+  { date: "2027-02-28", titre: "Retour à Silent Hill (collector steelbook)", lien: "https://www.amazon.fr/s?k=Retour%20a%20Silent%20Hill%204K%20collector%20steelbook&tag=antho24kb-21" },
+];
+
+const liste = document.getElementById("liste");
+if (!STEELBOOKS.length) {
+  liste.innerHTML = '<p class="vide">Les prochaines sorties arrivent très bientôt.</p>';
+} else {
+  const tries = [...STEELBOOKS].sort((a, b) => a.date.localeCompare(b.date));
+  let moisCourant = "";
+  tries.forEach(s => {
+    const d = new Date(s.date + "T12:00:00");
+    const mois = d.toLocaleDateString("fr-FR", { month: "long", year: "numeric" });
+    if (mois !== moisCourant) {
+      moisCourant = mois;
+      const h = document.createElement("div");
+      h.className = "mois";
+      h.textContent = mois;
+      liste.appendChild(h);
+    }
+    const jour = d.toLocaleDateString("fr-FR", { day: "numeric", month: "long" });
+    const el = document.createElement("div");
+    el.className = "sb";
+    el.innerHTML = '<div><div class="date"></div><div class="titre"></div></div>' +
+                   '<a class="bouton" target="_blank" rel="noopener sponsored">Voir sur Amazon</a>';
+    el.querySelector(".date").textContent = jour;
+    el.querySelector(".titre").textContent = s.titre;
+    el.querySelector("a").href = s.lien;
+    liste.appendChild(el);
+  });
+}
+</script>
+</body>
+</html>
