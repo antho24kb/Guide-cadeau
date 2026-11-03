@@ -21,6 +21,10 @@
   .sb .date{font-size:13px;color:#6b5d48}
   .sb .titre{font-weight:bold}
   a.bouton{background:var(--rouge);color:#fff;text-decoration:none;padding:10px 14px;font-family:Arial,sans-serif;font-size:14px;font-weight:bold;border-radius:4px;white-space:nowrap}
+  .une{border:3px solid var(--rouge);background:var(--carte);padding:12px 14px;margin:0 0 16px;text-align:center}
+  .une .label{display:inline-block;background:var(--rouge);color:#fff;font-family:Arial,sans-serif;font-weight:bold;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:5px 10px}
+  .une .titre{font-weight:bold;font-size:22px;margin:10px 0 2px}
+  .une .date{font-size:14px;color:#6b5d48;margin-bottom:10px}
   .vide{text-align:center;font-style:italic;padding:24px}
   footer{text-align:center;font-size:12px;color:#6b5d48;padding:20px 16px 40px}
 </style>
@@ -32,6 +36,15 @@
   <p>Les sorties steelbook 4K, par date</p>
 </header>
 <main>
+
+  <!-- ALERTE-UNE : bloc géré à la main par Antho/Claude (alertes précommande). Ne JAMAIS supprimer ni modifier par la mise à jour automatique. -->
+  <div class="une">
+    <span class="label">Nouvelle précommande ouverte</span>
+    <div class="titre">Coffret Horreur 80's</div>
+    <div class="date">Sortie le 12 novembre 2026</div>
+    <a class="bouton" href="https://link.amazon/B02V1Qyhj" rel="sponsored nofollow noopener">Voir sur Amazon</a>
+  </div>
+  <!-- /ALERTE-UNE -->
 
   <section class="alertes">
     <iframe width="540" height="620"src="https://9158ec83.sibforms.com/v2/serve/MUIFAHd_Pk6CYkitmG2by5JsGAX_0h4N7ZXpTpwc_811hQqPBlmaREkqZTfI3GX3WssUDNS8qx5RWtOLVXAUDL3EazOBmNRvYNXHjc_vgvu9K88IEWpQkBTpVZjNoCqY95K4H0JItbeHBVe6XFlu5VJLwJzZ8SoLJusC4ay3NBLYjQsmt4OUqHbLCs8d4BHGYOX8S-4UsbHbRiPFlQ==" frameborder="0" scrolling="auto" allowfullscreen style="display:block;margin:10px auto 0;max-width:100%;"></iframe>
@@ -48,8 +61,7 @@
 /* Pour ajouter un steelbook : copie une ligne, change la date (AAAA-MM-JJ), le titre et le lien Amazon (avec ton tag). */
 const STEELBOOKS = [
   { date: "2026-11-04", titre: "Autant en emporte le vent", lien: "https://www.amazon.fr/dp/B0H9ZLF81Y?tag=antho24kb-21" },
-  { date: "2026-11-04", titre: "Coffret Horreur 80's", lien: "https://www.amazon.fr/dp/B0HJ6LR5SZ?tag=antho24kb-21" },
-  { date: "2026-11-04", titre: "La Petite Boutique des horreurs", lien: "https://www.amazon.fr/dp/B0H6XLD84P?tag=antho24kb-21" },
+    { date: "2026-11-04", titre: "La Petite Boutique des horreurs", lien: "https://www.amazon.fr/dp/B0H6XLD84P?tag=antho24kb-21" },
   { date: "2026-11-04", titre: "Supergirl", lien: "https://www.amazon.fr/dp/B0H6XNWTVQ?tag=antho24kb-21" },
   { date: "2026-11-04", titre: "Godzilla Minus One", lien: "https://www.amazon.fr/dp/B0HHK39LWS?tag=antho24kb-21" },
   { date: "2026-11-04", titre: "Disjoncté", lien: "https://www.amazon.fr/dp/B0H773SBRM?tag=antho24kb-21" },
@@ -59,6 +71,7 @@ const STEELBOOKS = [
   { date: "2026-11-11", titre: "Le Cercle des poètes disparus", lien: "https://www.amazon.fr/dp/B0HH13QP2Q?tag=antho24kb-21" },
   { date: "2026-11-11", titre: "Vaiana", lien: "https://www.amazon.fr/dp/B0HJ6P9MHG?tag=antho24kb-21" },
   { date: "2026-11-12", titre: "Evil Dead Burn", lien: "https://www.amazon.fr/dp/B0HFKT2F6Q?tag=antho24kb-21" },
+  { date: "2026-11-12", titre: "Coffret Horreur 80's", lien: "https://link.amazon/B02V1Qyhj" },
   { date: "2026-11-18", titre: "L'Odyssée", lien: "https://www.amazon.fr/dp/B0HMY41Z9K?tag=antho24kb-21" },
   { date: "2026-11-18", titre: "Les Ailes de l'enfer", lien: "https://www.amazon.fr/dp/B0HLGX3TZ3?tag=antho24kb-21" },
   { date: "2026-11-18", titre: "High Society", lien: "https://www.amazon.fr/dp/B0H8CQPLYD?tag=antho24kb-21" },
