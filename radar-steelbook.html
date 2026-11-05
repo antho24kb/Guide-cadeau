@@ -57,6 +57,14 @@
   .sb a.bouton{padding:9px 12px;font-size:12px}
   .vide{text-align:center;font-style:italic;color:var(--muted);padding:24px}
   footer{text-align:center;font-size:12px;color:var(--muted);padding:26px 16px 46px;max-width:520px;margin:0 auto}
+  .pdf{display:flex;align-items:center;gap:14px;background:linear-gradient(160deg,rgba(240,184,64,.14),rgba(255,255,255,.03) 55%);border:1px solid rgba(240,184,64,.4);border-radius:18px;padding:16px 14px}
+  .pdf .ico{flex:none;width:54px;height:70px;border-radius:6px;background:linear-gradient(160deg,#ffdc82,#f0b840);color:#1a1204;font-family:"Playfair Display",Georgia,serif;font-weight:900;font-size:22px;line-height:1;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:0 8px 18px rgba(0,0,0,.5)}
+  .pdf .ico small{font-family:Inter,system-ui,sans-serif;font-size:9px;font-weight:800;letter-spacing:.12em;margin-top:4px}
+  .pdf .txt{flex:1;min-width:0}
+  .pdf h2{margin:0;font-family:"Playfair Display",Georgia,serif;font-size:20px;line-height:1.2}
+  .pdf p{margin:3px 0 0;font-size:13px;color:var(--muted)}
+  .pdf a.bouton{margin-top:10px}
+  @media(max-width:380px){.pdf .ico{width:44px;height:58px;font-size:18px}}
   @media(max-width:380px){.sb a.bouton{padding:8px 10px}.une .al img{width:52px}}
 </style>
 <link rel="alternate" type="application/rss+xml" title="Alertes steelbook" href="feed.xml">
@@ -109,6 +117,16 @@
     <h2>Ne rate plus aucune précommande</h2>
     <p class="sous">Un seul mail par jour à 19h avec toutes les précommandes ouvertes. Pas de spam.</p>
     <iframe width="540" height="620" src="https://9158ec83.sibforms.com/v2/serve/MUIFAHd_Pk6CYkitmG2by5JsGAX_0h4N7ZXpTpwc_811hQqPBlmaREkqZTfI3GX3WssUDNS8qx5RWtOLVXAUDL3EazOBmNRvYNXHjc_vgvu9K88IEWpQkBTpVZjNoCqY95K4H0JItbeHBVe6XFlu5VJLwJzZ8SoLJusC4ay3NBLYjQsmt4OUqHbLCs8d4BHGYOX8S-4UsbHbRiPFlQ==" frameborder="0" scrolling="auto" allowfullscreen style="display:block;margin:0 auto;max-width:100%;border:0;border-radius:14px;background:#fff"></iframe>
+  </section>
+
+  <div class="titre-section">Cadeau gratuit</div>
+  <section class="pdf">
+    <div class="ico">100<small>FILMS</small></div>
+    <div class="txt">
+      <h2>100 films à voir : le PDF gratuit</h2>
+      <p>La check-list des films cultes à cocher, à imprimer.</p>
+      <a class="bouton" href="100-films-cultes-a-cocher.pdf" download data-goatcounter-click="telechargement-pdf-100-films-radar" data-goatcounter-title="Telechargement PDF 100 films (page radar)">Télécharger le PDF</a>
+    </div>
   </section>
 
   <div class="titre-section">Calendrier des sorties</div>
