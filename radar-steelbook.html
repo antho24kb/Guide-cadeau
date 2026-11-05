@@ -14,6 +14,7 @@
 <style>
   :root{--bg:#05070d;--bg2:#0b1424;--or:#f0b840;--or2:#ffdc82;--encre:#eef2f9;--muted:#94a1b7;--carte:rgba(255,255,255,.045);--trait:rgba(255,255,255,.1);--rouge:#e0243a}
   *{box-sizing:border-box}
+  [hidden]{display:none!important}
   html{background:var(--bg)}
   body{margin:0;color:var(--encre);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;
     background:radial-gradient(120% 55% at 50% -5%,#12305a 0%,rgba(9,22,44,.55) 45%,rgba(5,7,13,0) 75%),var(--bg);background-repeat:no-repeat;min-height:100vh}
@@ -48,7 +49,8 @@
   .mail h2{margin:0;font-family:"Playfair Display",Georgia,serif;font-size:19px;line-height:1.2}
   .mail p.sous{margin:2px 0 0;color:var(--muted);font-size:13px}
   .mail button.bouton{display:inline-block;background:linear-gradient(180deg,var(--or2),var(--or));color:#1a1204;border:0;border-radius:10px;padding:11px 15px;font:inherit;font-size:13px;font-weight:800;white-space:nowrap;cursor:pointer;box-shadow:0 4px 14px rgba(240,184,64,.25)}
-  #form-mail{margin-top:14px}
+  #form-mail{margin-top:12px}
+  .fermer{display:block;margin:0 0 10px auto;font:inherit;font-size:13px;font-weight:700;color:var(--encre);background:rgba(255,255,255,.08);border:1px solid var(--trait);border-radius:99px;padding:8px 14px;cursor:pointer}
   .mois{display:flex;align-items:center;gap:10px;margin:30px 0 10px;font-family:"Playfair Display",Georgia,serif;font-style:italic;font-weight:700;font-size:24px;color:var(--or);text-transform:capitalize}
   .mois::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(240,184,64,.45),rgba(240,184,64,0))}
   .sb{display:flex;align-items:center;gap:14px;background:var(--carte);border:1px solid var(--trait);border-radius:14px;padding:11px 12px;margin-bottom:8px}
@@ -132,6 +134,7 @@
       <button type="button" class="bouton" id="ouvrir-mail" data-goatcounter-click="ouvrir-formulaire-mail" data-goatcounter-title="Ouvrir le formulaire mail">Je m'inscris</button>
     </div>
     <div id="form-mail" hidden>
+      <button type="button" class="fermer" id="fermer-mail" aria-label="Fermer le formulaire">Fermer ✕</button>
       <iframe width="540" height="620" src="https://9158ec83.sibforms.com/v2/serve/MUIFAHd_Pk6CYkitmG2by5JsGAX_0h4N7ZXpTpwc_811hQqPBlmaREkqZTfI3GX3WssUDNS8qx5RWtOLVXAUDL3EazOBmNRvYNXHjc_vgvu9K88IEWpQkBTpVZjNoCqY95K4H0JItbeHBVe6XFlu5VJLwJzZ8SoLJusC4ay3NBLYjQsmt4OUqHbLCs8d4BHGYOX8S-4UsbHbRiPFlQ==" frameborder="0" scrolling="auto" allowfullscreen style="display:block;margin:0 auto;max-width:100%;border:0;border-radius:14px;background:#fff"></iframe>
     </div>
   </section>
@@ -258,9 +261,16 @@ function afficher(mode) {
     liste.appendChild(el);
   });
 }
-document.getElementById("ouvrir-mail").addEventListener("click", e => {
-  document.getElementById("form-mail").hidden = false;
-  e.currentTarget.hidden = true;
+const boutonMail = document.getElementById("ouvrir-mail");
+const formMail = document.getElementById("form-mail");
+boutonMail.addEventListener("click", () => {
+  formMail.hidden = false;
+  boutonMail.hidden = true;
+});
+document.getElementById("fermer-mail").addEventListener("click", () => {
+  formMail.hidden = true;
+  boutonMail.hidden = false;
+  boutonMail.closest(".mail").scrollIntoView({ block: "center" });
 });
 document.querySelectorAll(".filtres button").forEach(btn => {
   btn.addEventListener("click", () => {
