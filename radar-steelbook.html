@@ -42,9 +42,13 @@
   a.bouton{display:inline-block;background:linear-gradient(180deg,var(--or2),var(--or));color:#1a1204;text-decoration:none;padding:10px 15px;font-size:13px;font-weight:800;border-radius:10px;white-space:nowrap;letter-spacing:.01em;box-shadow:0 4px 14px rgba(240,184,64,.25)}
   a.bouton:active{transform:scale(.97)}
   .une a.bouton{margin-top:8px}
-  .mail{background:var(--carte);border:1px solid var(--trait);border-radius:18px;padding:20px 14px 16px;text-align:center}
-  .mail h2{margin:0 0 4px;font-family:"Playfair Display",Georgia,serif;font-size:26px;line-height:1.15}
-  .mail p.sous{margin:0 auto 14px;color:var(--muted);font-size:14px;max-width:420px}
+  .mail{background:var(--carte);border:1px solid var(--trait);border-radius:18px;padding:14px}
+  .mail-tete{display:flex;align-items:center;gap:12px}
+  .mail-tete .txt{flex:1;min-width:0}
+  .mail h2{margin:0;font-family:"Playfair Display",Georgia,serif;font-size:19px;line-height:1.2}
+  .mail p.sous{margin:2px 0 0;color:var(--muted);font-size:13px}
+  .mail button.bouton{display:inline-block;background:linear-gradient(180deg,var(--or2),var(--or));color:#1a1204;border:0;border-radius:10px;padding:11px 15px;font:inherit;font-size:13px;font-weight:800;white-space:nowrap;cursor:pointer;box-shadow:0 4px 14px rgba(240,184,64,.25)}
+  #form-mail{margin-top:14px}
   .mois{display:flex;align-items:center;gap:10px;margin:30px 0 10px;font-family:"Playfair Display",Georgia,serif;font-style:italic;font-weight:700;font-size:24px;color:var(--or);text-transform:capitalize}
   .mois::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(240,184,64,.45),rgba(240,184,64,0))}
   .sb{display:flex;align-items:center;gap:14px;background:var(--carte);border:1px solid var(--trait);border-radius:14px;padding:11px 12px;margin-bottom:8px}
@@ -119,9 +123,16 @@
 
   <div class="titre-section">Alerte par mail</div>
   <section class="mail alertes">
-    <h2>Ne rate plus aucune précommande</h2>
-    <p class="sous">Un seul mail par jour à 19h avec toutes les précommandes ouvertes. Pas de spam.</p>
-    <iframe width="540" height="620" src="https://9158ec83.sibforms.com/v2/serve/MUIFAHd_Pk6CYkitmG2by5JsGAX_0h4N7ZXpTpwc_811hQqPBlmaREkqZTfI3GX3WssUDNS8qx5RWtOLVXAUDL3EazOBmNRvYNXHjc_vgvu9K88IEWpQkBTpVZjNoCqY95K4H0JItbeHBVe6XFlu5VJLwJzZ8SoLJusC4ay3NBLYjQsmt4OUqHbLCs8d4BHGYOX8S-4UsbHbRiPFlQ==" frameborder="0" scrolling="auto" allowfullscreen style="display:block;margin:0 auto;max-width:100%;border:0;border-radius:14px;background:#fff"></iframe>
+    <div class="mail-tete">
+      <div class="txt">
+        <h2>Ne rate plus aucune précommande</h2>
+        <p class="sous">Un seul mail par jour à 19h. Pas de spam.</p>
+      </div>
+      <button type="button" class="bouton" id="ouvrir-mail" data-goatcounter-click="ouvrir-formulaire-mail" data-goatcounter-title="Ouvrir le formulaire mail">Je m'inscris</button>
+    </div>
+    <div id="form-mail" hidden>
+      <iframe width="540" height="620" src="https://9158ec83.sibforms.com/v2/serve/MUIFAHd_Pk6CYkitmG2by5JsGAX_0h4N7ZXpTpwc_811hQqPBlmaREkqZTfI3GX3WssUDNS8qx5RWtOLVXAUDL3EazOBmNRvYNXHjc_vgvu9K88IEWpQkBTpVZjNoCqY95K4H0JItbeHBVe6XFlu5VJLwJzZ8SoLJusC4ay3NBLYjQsmt4OUqHbLCs8d4BHGYOX8S-4UsbHbRiPFlQ==" frameborder="0" scrolling="auto" allowfullscreen style="display:block;margin:0 auto;max-width:100%;border:0;border-radius:14px;background:#fff"></iframe>
+    </div>
   </section>
 
   <div class="titre-section">Cadeau gratuit</div>
@@ -245,6 +256,10 @@ function afficher(mode) {
     liste.appendChild(el);
   });
 }
+document.getElementById("ouvrir-mail").addEventListener("click", e => {
+  document.getElementById("form-mail").hidden = false;
+  e.currentTarget.hidden = true;
+});
 document.querySelectorAll(".filtres button").forEach(btn => {
   btn.addEventListener("click", () => {
     document.querySelectorAll(".filtres button").forEach(x => x.classList.toggle("on", x === btn));
