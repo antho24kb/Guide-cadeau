@@ -4,67 +4,119 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Radar Steelbook</title>
+<meta name="description" content="Les sorties de steelbooks 4K, par date, et l'alerte précommande par mail.">
+<meta property="og:title" content="Radar Steelbook">
+<meta property="og:description" content="Les sorties de steelbooks 4K, par date, et l'alerte précommande par mail.">
+<meta name="theme-color" content="#05070d">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&display=swap" rel="stylesheet">
 <style>
-  :root{--fond:#f6efe0;--encre:#2a2118;--rouge:#d9411e;--trait:#d8cdb4;--carte:#fffaf0}
+  :root{--bg:#05070d;--bg2:#0b1424;--or:#f0b840;--or2:#ffdc82;--encre:#eef2f9;--muted:#94a1b7;--carte:rgba(255,255,255,.045);--trait:rgba(255,255,255,.1);--rouge:#e0243a}
   *{box-sizing:border-box}
-  body{margin:0;background:var(--fond);color:var(--encre);font-family:Georgia,"Times New Roman",serif;line-height:1.45}
-  header{text-align:center;padding:28px 16px 12px;border-bottom:3px double var(--encre);margin:0 16px}
-  h1{margin:0;font-size:30px;letter-spacing:2px;text-transform:uppercase}
-  header p{margin:6px 0 0;font-style:italic}
-  main{max-width:640px;margin:0 auto;padding:16px}
-  .alertes{text-align:center;margin-bottom:12px}
-  .alertes iframe{border:2px solid var(--encre)!important;background:var(--carte)}
-  .alertes h2{margin:0 0 6px;font-size:20px}
-  .alertes a.bouton{display:inline-block;margin-top:10px}
-  .mois{font-weight:bold;font-size:20px;border-bottom:1px solid var(--encre);margin:24px 0 8px;text-transform:capitalize}
-  .sb{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--carte);border:1px solid var(--trait);padding:12px;margin-bottom:8px}
-  .sb .date{font-size:13px;color:#6b5d48}
-  .sb .titre{font-weight:bold}
-  a.bouton{background:var(--rouge);color:#fff;text-decoration:none;padding:10px 14px;font-family:Arial,sans-serif;font-size:14px;font-weight:bold;border-radius:4px;white-space:nowrap}
-  .une{border:3px solid var(--rouge);background:var(--carte);padding:12px 14px;margin:0 0 16px;text-align:center}
-  .une .label{display:inline-block;background:var(--rouge);color:#fff;font-family:Arial,sans-serif;font-weight:bold;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:5px 10px}
-  .une .titre{font-weight:bold;font-size:22px;margin:10px 0 2px}
-  .une .date{font-size:14px;color:#6b5d48;margin-bottom:10px}
-  .vide{text-align:center;font-style:italic;padding:24px}
-  footer{text-align:center;font-size:12px;color:#6b5d48;padding:20px 16px 40px}
+  html{background:var(--bg)}
+  body{margin:0;color:var(--encre);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased;
+    background:radial-gradient(120% 55% at 50% -5%,#12305a 0%,rgba(9,22,44,.55) 45%,rgba(5,7,13,0) 75%),var(--bg);background-repeat:no-repeat;min-height:100vh}
+  main{max-width:640px;margin:0 auto;padding:0 16px 8px}
+  header{text-align:center;padding:44px 16px 26px;max-width:640px;margin:0 auto}
+  .badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--or);border:1px solid rgba(240,184,64,.45);border-radius:99px;padding:6px 14px 6px 17px}
+  h1{margin:16px 0 8px;font-family:"Playfair Display",Georgia,serif;font-weight:900;font-size:clamp(40px,12vw,64px);line-height:1;letter-spacing:.01em;text-transform:uppercase;
+    background:linear-gradient(100deg,#8995a8 0%,#f7faff 30%,#a8b4c6 48%,#ffffff 62%,#8995a8 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+  header p{margin:0 auto;color:var(--muted);font-size:16px;max-width:420px}
+  .stats{display:flex;justify-content:center;gap:10px;margin-top:22px;flex-wrap:wrap}
+  .stat{background:var(--carte);border:1px solid var(--trait);border-radius:12px;padding:10px 16px;min-width:130px}
+  .stat b{display:block;font-family:"Playfair Display",Georgia,serif;font-size:26px;color:var(--or);line-height:1.1}
+  .stat span{font-size:12px;color:var(--muted)}
+  .titre-section{display:flex;align-items:center;gap:10px;margin:30px 0 12px;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--or)}
+  .titre-section::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(240,184,64,.5),rgba(240,184,64,0))}
+  .point{width:9px;height:9px;border-radius:50%;background:var(--rouge);box-shadow:0 0 0 0 rgba(224,36,58,.7);animation:pulse 1.8s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(224,36,58,.6)}70%{box-shadow:0 0 0 10px rgba(224,36,58,0)}100%{box-shadow:0 0 0 0 rgba(224,36,58,0)}}
+  .une{background:linear-gradient(160deg,rgba(224,36,58,.1),rgba(255,255,255,.03) 45%);border:1px solid rgba(224,36,58,.45);border-radius:18px;padding:6px 14px;box-shadow:0 0 40px rgba(224,36,58,.1)}
+  .une .label{display:none}
+  .une .al{display:flex;align-items:center;gap:14px;padding:12px 0;border-top:1px solid var(--trait)}
+  .une .al:first-of-type{border-top:0}
+  .une .al img{width:62px;height:auto;flex:none;filter:drop-shadow(0 8px 14px rgba(0,0,0,.6))}
+  .une .al .txt{flex:1;min-width:0}
+  .une .titre{font-weight:700;font-size:16px;line-height:1.25}
+  .une .date{font-size:13px;color:var(--or2);margin-top:2px}
+  a.bouton{display:inline-block;background:linear-gradient(180deg,var(--or2),var(--or));color:#1a1204;text-decoration:none;padding:10px 15px;font-size:13px;font-weight:800;border-radius:10px;white-space:nowrap;letter-spacing:.01em;box-shadow:0 4px 14px rgba(240,184,64,.25)}
+  a.bouton:active{transform:scale(.97)}
+  .une a.bouton{margin-top:8px}
+  .mail{background:var(--carte);border:1px solid var(--trait);border-radius:18px;padding:20px 14px 16px;text-align:center}
+  .mail h2{margin:0 0 4px;font-family:"Playfair Display",Georgia,serif;font-size:26px;line-height:1.15}
+  .mail p.sous{margin:0 auto 14px;color:var(--muted);font-size:14px;max-width:420px}
+  .mois{display:flex;align-items:center;gap:10px;margin:30px 0 10px;font-family:"Playfair Display",Georgia,serif;font-style:italic;font-weight:700;font-size:24px;color:var(--or);text-transform:capitalize}
+  .mois::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(240,184,64,.45),rgba(240,184,64,0))}
+  .sb{display:flex;align-items:center;gap:14px;background:var(--carte);border:1px solid var(--trait);border-radius:14px;padding:11px 12px;margin-bottom:8px}
+  .sb .jour{flex:none;width:52px;text-align:center;border-right:1px solid var(--trait);padding-right:12px}
+  .sb .jour b{display:block;font-family:"Playfair Display",Georgia,serif;font-size:26px;line-height:1;color:var(--or)}
+  .sb .jour span{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+  .sb .txt{flex:1;min-width:0}
+  .sb .titre{font-weight:600;font-size:15px;line-height:1.3}
+  .sb .date{display:none}
+  .sb a.bouton{padding:9px 12px;font-size:12px}
+  .vide{text-align:center;font-style:italic;color:var(--muted);padding:24px}
+  footer{text-align:center;font-size:12px;color:var(--muted);padding:26px 16px 46px;max-width:520px;margin:0 auto}
+  @media(max-width:380px){.sb a.bouton{padding:8px 10px}.une .al img{width:52px}}
 </style>
 <link rel="alternate" type="application/rss+xml" title="Alertes steelbook" href="feed.xml">
 <script data-goatcounter="https://radarsteelbook.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
 <header>
+  <span class="badge">Le Daron</span>
   <h1>Radar Steelbook</h1>
-  <p>Les sorties steelbook 4K, par date</p>
+  <p>Les sorties steelbook 4K, par date. Un seul mail par jour quand une précommande s'ouvre.</p>
+  <div class="stats">
+    <div class="stat"><b id="nb">·</b><span>sorties à venir</span></div>
+    <div class="stat"><b>19h</b><span>mail récap quotidien</span></div>
+  </div>
 </header>
 <main>
 
-  <!-- ALERTE-UNE : bloc géré à la main par Antho/Claude (alertes précommande). Ne JAMAIS supprimer ni modifier par la mise à jour automatique. -->
+  <div class="titre-section"><span class="point"></span>Nouvelles précommandes ouvertes</div>
+  <!-- ALERTE-UNE : bloc géré à la main par Antho/Claude (alertes précommande). Ne JAMAIS supprimer ni modifier par la mise à jour automatique. Max 4 items, le plus récent en haut. Un item = <div class="al"> avec <img src="alertes/thumb-XXX.webp"> optionnel + <div class="txt"> (titre, date, bouton). -->
   <div class="une">
-    <span class="label">Nouvelle précommande ouverte</span>
-    <div class="titre">Malfaisante (Other Mommy)</div>
-    <div class="date">Sortie le 31 décembre 2027</div>
-    <a class="bouton" href="https://link.amazon/B0h69zCbF" rel="sponsored nofollow noopener">Voir sur Amazon</a>
-    <hr style="border:0;border-top:1px solid var(--trait);margin:14px 0">
-    <div class="titre">Street Fighter (2026)</div>
-    <div class="date">Sortie le 11 février 2027</div>
-    <a class="bouton" href="https://link.amazon/B07t6aBtA" rel="sponsored nofollow noopener">Voir sur Amazon</a>
-    <hr style="border:0;border-top:1px solid var(--trait);margin:14px 0">
-    <div class="titre">Coffret Horreur 80's</div>
-    <div class="date">Sortie le 12 novembre 2026</div>
-    <a class="bouton" href="https://link.amazon/B02V1Qyhj" rel="sponsored nofollow noopener">Voir sur Amazon</a>
+    <div class="al">
+      <img src="alertes/thumb-malfaisante.webp" alt="" loading="lazy">
+      <div class="txt">
+        <div class="titre">Malfaisante (Other Mommy)</div>
+        <div class="date">Sortie le 31 décembre 2027</div>
+        <a class="bouton" href="https://link.amazon/B0h69zCbF" rel="sponsored nofollow noopener">Voir sur Amazon</a>
+      </div>
+    </div>
+    <div class="al">
+      <img src="alertes/thumb-streetfighter.webp" alt="" loading="lazy">
+      <div class="txt">
+        <div class="titre">Street Fighter (2026)</div>
+        <div class="date">Sortie le 11 février 2027</div>
+        <a class="bouton" href="https://link.amazon/B07t6aBtA" rel="sponsored nofollow noopener">Voir sur Amazon</a>
+      </div>
+    </div>
+    <div class="al">
+      <img src="alertes/thumb-horreur80.webp" alt="" loading="lazy">
+      <div class="txt">
+        <div class="titre">Coffret Horreur 80's</div>
+        <div class="date">Sortie le 12 novembre 2026</div>
+        <a class="bouton" href="https://link.amazon/B02V1Qyhj" rel="sponsored nofollow noopener">Voir sur Amazon</a>
+      </div>
+    </div>
   </div>
   <!-- /ALERTE-UNE -->
 
-  <section class="alertes">
-    <p style="text-align:center;font-weight:700;margin:0 0 6px;font-size:15px">Un seul mail par jour à 19h avec toutes les précommandes ouvertes. Pas de spam.</p>
-    <iframe width="540" height="620"src="https://9158ec83.sibforms.com/v2/serve/MUIFAHd_Pk6CYkitmG2by5JsGAX_0h4N7ZXpTpwc_811hQqPBlmaREkqZTfI3GX3WssUDNS8qx5RWtOLVXAUDL3EazOBmNRvYNXHjc_vgvu9K88IEWpQkBTpVZjNoCqY95K4H0JItbeHBVe6XFlu5VJLwJzZ8SoLJusC4ay3NBLYjQsmt4OUqHbLCs8d4BHGYOX8S-4UsbHbRiPFlQ==" frameborder="0" scrolling="auto" allowfullscreen style="display:block;margin:10px auto 0;max-width:100%;"></iframe>
+  <div class="titre-section">Alerte par mail</div>
+  <section class="mail alertes">
+    <h2>Ne rate plus aucune précommande</h2>
+    <p class="sous">Un seul mail par jour à 19h avec toutes les précommandes ouvertes. Pas de spam.</p>
+    <iframe width="540" height="620" src="https://9158ec83.sibforms.com/v2/serve/MUIFAHd_Pk6CYkitmG2by5JsGAX_0h4N7ZXpTpwc_811hQqPBlmaREkqZTfI3GX3WssUDNS8qx5RWtOLVXAUDL3EazOBmNRvYNXHjc_vgvu9K88IEWpQkBTpVZjNoCqY95K4H0JItbeHBVe6XFlu5VJLwJzZ8SoLJusC4ay3NBLYjQsmt4OUqHbLCs8d4BHGYOX8S-4UsbHbRiPFlQ==" frameborder="0" scrolling="auto" allowfullscreen style="display:block;margin:0 auto;max-width:100%;border:0;border-radius:14px;background:#fff"></iframe>
   </section>
 
+  <div class="titre-section">Calendrier des sorties</div>
   <div id="liste"></div>
 
 </main>
 <footer>
-  En tant que Partenaire Amazon, je réalise un bénéfice sur les achats remplissant les conditions requises.
+  En tant que Partenaire Amazon, je réalise un bénéfice sur les achats remplissant les conditions requises. Les prix et la disponibilité sont ceux affichés sur Amazon.
 </footer>
 
 <script>
@@ -117,6 +169,7 @@ const STEELBOOKS = [
 ];
 
 const liste = document.getElementById("liste");
+document.getElementById("nb").textContent = STEELBOOKS.length;
 if (!STEELBOOKS.length) {
   liste.innerHTML = '<p class="vide">Les prochaines sorties arrivent très bientôt.</p>';
 } else {
@@ -135,8 +188,11 @@ if (!STEELBOOKS.length) {
     const jour = d.toLocaleDateString("fr-FR", { day: "numeric", month: "long" });
     const el = document.createElement("div");
     el.className = "sb";
-    el.innerHTML = '<div><div class="date"></div><div class="titre"></div></div>' +
-                   '<a class="bouton" target="_blank" rel="noopener sponsored">Voir sur Amazon</a>';
+    el.innerHTML = '<div class="jour"><b></b><span></span></div>' +
+                   '<div class="txt"><div class="titre"></div><div class="date"></div></div>' +
+                   '<a class="bouton" target="_blank" rel="noopener sponsored">Amazon</a>';
+    el.querySelector(".jour b").textContent = d.getDate();
+    el.querySelector(".jour span").textContent = d.toLocaleDateString("fr-FR", { month: "short" }).replace(".", "");
     el.querySelector(".date").textContent = jour;
     el.querySelector(".titre").textContent = s.titre;
     el.querySelector("a").href = s.lien;
