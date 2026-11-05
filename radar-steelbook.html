@@ -64,6 +64,13 @@
   .filtres{display:flex;gap:8px;margin:0 0 4px;flex-wrap:wrap}
   .filtres button{font:inherit;font-size:13px;font-weight:700;color:var(--muted);background:var(--carte);border:1px solid var(--trait);border-radius:99px;padding:8px 16px;cursor:pointer}
   .filtres button.on{color:#1a1204;background:linear-gradient(180deg,var(--or2),var(--or));border-color:transparent}
+  .mois-bloc{margin:0 0 10px}
+  .mois-bloc summary{list-style:none;display:flex;align-items:center;gap:10px;cursor:pointer;margin:0 0 10px;padding:12px 14px;background:var(--carte);border:1px solid var(--trait);border-radius:14px}
+  .mois-bloc summary::-webkit-details-marker{display:none}
+  .mois-bloc summary .nom{flex:1;font-family:"Playfair Display",Georgia,serif;font-style:italic;font-weight:700;font-size:20px;color:var(--or);text-transform:capitalize}
+  .mois-bloc summary .nb{font-size:12px;color:var(--muted)}
+  .mois-bloc summary::after{content:"";width:9px;height:9px;border:solid var(--or);border-width:0 2px 2px 0;transform:rotate(45deg);margin:-4px 4px 0 2px;transition:transform .2s}
+  .mois-bloc[open] summary::after{transform:rotate(-135deg);margin-top:4px}
   .sb.passe{opacity:.75}
   .dispo{flex:none;font-size:12px;font-weight:700;color:#6fe3a0;border:1px solid rgba(111,227,160,.45);background:rgba(111,227,160,.08);border-radius:10px;padding:8px 11px;white-space:nowrap}
   .vide{text-align:center;font-style:italic;color:var(--muted);padding:24px}
@@ -154,7 +161,6 @@
   <div class="filtres" role="group" aria-label="Filtrer le calendrier">
     <button type="button" class="on" data-f="avenir">À venir</button>
     <button type="button" data-f="dispo">Disponibles</button>
-    <button type="button" data-f="tout">Tout</button>
   </div>
   <div id="liste"></div>
 
@@ -217,7 +223,30 @@ const aujourdhui = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Paris" }
 const moisActuel = aujourdhui.slice(0, 7);
 document.getElementById("nb").textContent = STEELBOOKS.filter(s => s.date > aujourdhui).length;
 
-/* Filtres : "avenir" = sorties à venir + disponibles du mois en cours ; "dispo" = tous les disponibles, tous mois ; "tout" = tout. */
+/* Filtres : "avenir" = mois en cours (sorties + disponibles du mois) puis mois futurs repliés ; "dispo" = tous les disponibles, tous mois (mois en cours ouvert, les autres repliés). */
+function carte(s, aujourdhui) {
+  const d = new Date(s.date + "T12:00:00");
+  const jour = d.toLocaleDateString("fr-FR", { day: "numeric", month: "long" });
+  const el = document.createElement("div");
+  el.className = "sb";
+  el.innerHTML = '<div class="jour"><b></b><span></span></div>' +
+                 '<div class="txt"><div class="titre"></div><div class="date"></div></div>' +
+                 '<a class="bouton" target="_blank" rel="noopener sponsored">Amazon</a>';
+  el.querySelector(".jour b").textContent = d.getDate();
+  el.querySelector(".jour span").textContent = d.toLocaleDateString("fr-FR", { month: "short" }).replace(".", "");
+  el.querySelector(".date").textContent = jour;
+  el.querySelector(".titre").textContent = s.titre;
+  if (s.date <= aujourdhui) {
+    el.classList.add("passe");
+    const tag = document.createElement("span");
+    tag.className = "dispo";
+    tag.textContent = "Disponible";
+    el.querySelector("a").replaceWith(tag);
+  } else {
+    el.querySelector("a").href = s.lien;
+  }
+  return el;
+}
 function afficher(mode) {
   liste.innerHTML = "";
   let items = [...STEELBOOKS];
@@ -228,37 +257,26 @@ function afficher(mode) {
     liste.innerHTML = '<p class="vide">' + (mode === "dispo" ? "Aucun steelbook disponible pour le moment." : "Les prochaines sorties arrivent très bientôt.") + '</p>';
     return;
   }
-  let moisCourant = "";
+  const groupes = [];
   items.forEach(s => {
-    const d = new Date(s.date + "T12:00:00");
-    const mois = d.toLocaleDateString("fr-FR", { month: "long", year: "numeric" });
-    if (mois !== moisCourant) {
-      moisCourant = mois;
-      const h = document.createElement("div");
-      h.className = "mois";
-      h.textContent = mois;
-      liste.appendChild(h);
-    }
-    const jour = d.toLocaleDateString("fr-FR", { day: "numeric", month: "long" });
-    const el = document.createElement("div");
-    el.className = "sb";
-    el.innerHTML = '<div class="jour"><b></b><span></span></div>' +
-                   '<div class="txt"><div class="titre"></div><div class="date"></div></div>' +
-                   '<a class="bouton" target="_blank" rel="noopener sponsored">Amazon</a>';
-    el.querySelector(".jour b").textContent = d.getDate();
-    el.querySelector(".jour span").textContent = d.toLocaleDateString("fr-FR", { month: "short" }).replace(".", "");
-    el.querySelector(".date").textContent = jour;
-    el.querySelector(".titre").textContent = s.titre;
-    if (s.date <= aujourdhui) {
-      el.classList.add("passe");
-      const tag = document.createElement("span");
-      tag.className = "dispo";
-      tag.textContent = "Disponible";
-      el.querySelector("a").replaceWith(tag);
-    } else {
-      el.querySelector("a").href = s.lien;
-    }
-    liste.appendChild(el);
+    const cle = s.date.slice(0, 7);
+    let g = groupes[groupes.length - 1];
+    if (!g || g.cle !== cle) { g = { cle, items: [] }; groupes.push(g); }
+    g.items.push(s);
+  });
+  groupes.forEach(g => {
+    const d = new Date(g.cle + "-15T12:00:00");
+    const nom = d.toLocaleDateString("fr-FR", { month: "long", year: "numeric" });
+    const det = document.createElement("details");
+    det.className = "mois-bloc";
+    det.open = g.cle === moisActuel;
+    const sum = document.createElement("summary");
+    sum.innerHTML = '<span class="nom"></span><span class="nb"></span>';
+    sum.querySelector(".nom").textContent = nom;
+    sum.querySelector(".nb").textContent = g.items.length + (g.items.length > 1 ? " sorties" : " sortie");
+    det.appendChild(sum);
+    g.items.forEach(s => det.appendChild(carte(s, aujourdhui)));
+    liste.appendChild(det);
   });
 }
 const boutonMail = document.getElementById("ouvrir-mail");
