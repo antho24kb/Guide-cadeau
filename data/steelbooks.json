@@ -1,15 +1,5 @@
 [
   {
-    "date": "2026-11-18",
-    "titre": "Autant en emporte le vent",
-    "lien": "https://www.amazon.fr/dp/B0H9ZLF81Y?tag=antho24kb-21"
-  },
-  {
-    "date": "2026-11-18",
-    "titre": "La Petite Boutique des horreurs",
-    "lien": "https://www.amazon.fr/dp/B0H6XLD84P?tag=antho24kb-21"
-  },
-  {
     "date": "2026-11-04",
     "titre": "Supergirl",
     "lien": "https://www.amazon.fr/dp/B0H6XNWTVQ?tag=antho24kb-21"
@@ -58,6 +48,16 @@
     "date": "2026-11-12",
     "titre": "Coffret Horreur 80's",
     "lien": "https://link.amazon/B02V1Qyhj"
+  },
+  {
+    "date": "2026-11-18",
+    "titre": "Autant en emporte le vent",
+    "lien": "https://www.amazon.fr/dp/B0H9ZLF81Y?tag=antho24kb-21"
+  },
+  {
+    "date": "2026-11-18",
+    "titre": "La Petite Boutique des horreurs",
+    "lien": "https://www.amazon.fr/dp/B0H6XLD84P?tag=antho24kb-21"
   },
   {
     "date": "2026-11-18",
@@ -170,6 +170,11 @@
     "lien": "https://www.amazon.fr/dp/B0HNPYZWTY?tag=antho24kb-21"
   },
   {
+    "date": "2026-12-31",
+    "titre": "Malfaisante (Other Mommy)",
+    "lien": "https://link.amazon/B0h69zCbF"
+  },
+  {
     "date": "2027-01-13",
     "titre": "58 minutes pour vivre",
     "lien": "https://www.amazon.fr/s?k=58%20minutes%20pour%20vivre%204K%20steelbook&tag=antho24kb-21"
@@ -213,10 +218,5 @@
     "date": "2027-02-28",
     "titre": "Retour à Silent Hill (collector steelbook)",
     "lien": "https://www.amazon.fr/s?k=Retour%20a%20Silent%20Hill%204K%20collector%20steelbook&tag=antho24kb-21"
-  },
-  {
-    "date": "2026-12-31",
-    "titre": "Malfaisante (Other Mommy)",
-    "lien": "https://link.amazon/B0h69zCbF"
   }
 ]
