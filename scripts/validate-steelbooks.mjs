@@ -1,3 +1,4 @@
+// Depuis la racine du dépôt : node scripts/validate-steelbooks.mjs
 import { readFile } from "node:fs/promises";
 
 const file = new URL("../data/steelbooks.json", import.meta.url);
