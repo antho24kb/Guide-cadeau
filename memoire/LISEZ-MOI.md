@@ -14,14 +14,14 @@ Lire dans cet ordre : `PROJET.md` → `REGLES.md` → `TACHES.md` → les 10 der
 ## Fonctionnement automatique
 1. Antho demande une tâche à ChatGPT.
 2. ChatGPT crée une branche `radar-task/<date>-<slug>` et une PR contenant une seule nouvelle ligne non cochée dans `TACHES.md`.
-3. Le workflow `.github/workflows/claude-task-runner.yml` démarre Claude si la PR vient du même dépôt, utilise cette branche dédiée et ajoute exactement une tâche non cochée. Les PR de forks et les autres branches ne lancent pas Claude.
+3. Le workflow `.github/workflows/claude-task-runner.yml` démarre Claude si la PR vient du même dépôt, utilise cette branche dédiée et contient exactement une nouvelle tâche non cochée. Les PR de forks et les autres branches ne lancent pas Claude.
 4. Claude travaille sur la branche de la PR. Il ne fusionne rien et ne publie pas le site.
 5. ChatGPT contrôle le résultat ; Antho valide et fusionne la PR. La publication du site ne se produit qu'après fusion, selon la configuration Pages du dépôt.
 
 Chaque tâche reste limitée à une seule consigne. Si Claude a besoin d'une décision d'Antho, d'un accès à un compte ou d'un secret manquant, il laisse la tâche non cochée et le signale dans la PR. Antho reste responsable de la publication TikTok et de l'envoi des e-mails.
 
 ## Configuration unique requise
-Dans les paramètres GitHub du dépôt, ajouter **un seul** secret Actions : `ANTHROPIC_API_KEY` ou `CLAUDE_CODE_OAUTH_TOKEN`. Ne jamais coller la valeur dans un fichier du dépôt ni dans une conversation. L'usage de l'API Anthropic peut être facturé selon le compte et le mode d'authentification.
+Installer l’application officielle [Claude pour GitHub](https://github.com/apps/claude) sur ce dépôt, puis ajouter **un seul** secret Actions : `ANTHROPIC_API_KEY` ou `CLAUDE_CODE_OAUTH_TOKEN`. Ne jamais coller la valeur dans un fichier du dépôt ni dans une conversation. L'usage de l'API Anthropic peut être facturé selon le compte et le mode d'authentification.
 
 ## Règles de fonctionnement
 1. Une seule consigne par PR, écrite dans `TACHES.md` avec responsable, échéance et critère de fin.
