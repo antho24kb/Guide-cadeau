@@ -171,8 +171,6 @@ let STEELBOOKS = [];
 const liste = document.getElementById("liste");
 const aujourdhui = new Intl.DateTimeFormat("en-CA", { timeZone: "Europe/Paris" }).format(new Date());
 const moisActuel = aujourdhui.slice(0, 7);
-document.getElementById("nb").textContent = STEELBOOKS.filter(s => s.date > aujourdhui).length;
-
 /* Filtres : "avenir" = mois en cours (sorties + disponibles du mois) puis mois futurs repliés ; "dispo" = tous les disponibles, tous mois (mois en cours ouvert, les autres repliés). */
 function carte(s, aujourdhui) {
   const d = new Date(s.date + "T12:00:00");
