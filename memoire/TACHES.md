@@ -11,6 +11,7 @@ Format : `- [ ] tâche — responsable — échéance — critère de fin`
 - [ ] Harmoniser le design de `steelbook.html` et `liste.html` avec la page radar — Claude — si Antho le demande
 - [ ] Point statistiques TikTok (Metricool) — Claude — chaque lundi — résumé envoyé à Antho
 - [ ] Pack de la semaine — Claude — chaque dimanche — pack envoyé à Antho
+- [ ] Externaliser et valider le catalogue Radar — Claude — sans échéance — déplacer sans perte le tableau `STEELBOOKS` de `radar-steelbook.html` dans `data/steelbooks.json` et charger ce fichier sur la page ; ajouter un validateur local sans dépendance qui vérifie les dates ISO, les titres non vides, les liens Amazon présents et l’absence de prix ou de doublons, sans ouvrir, tester ni modifier les liens ; préserver `ALERTE-UNE` et toutes les règles de `REGLES.md` ; vérifier l’affichage à 390 px ; une fois terminé, cocher la tâche et ajouter une ligne datée dans `JOURNAL.md`.
 
 ## Terminé
 - [x] Refonte de `radar-steelbook.html` (design « étiquette vidéo », polices locales) — Claude — 6 nov. 2026
