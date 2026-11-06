@@ -8,7 +8,7 @@ const seenTitles = new Set();
 const seenLinks = new Set();
 const expectedKeys = ["date", "titre", "lien"];
 const datePattern = /^\d{4}-\d{2}-\d{2}$/;
-const pricePattern = /(?:\b\d+(?:[.,]\d{1,2})?\s?€|€\s?\d+(?:[.,]\d{1,2})?|\b\d+(?:[.,]\d{1,2})?\s?(?:EUR|euros?)\b)/i;
+const pricePattern = /(?:[€$£]\\s?\\d[\\d\\s]*(?:[.,]\\d{1,2})?|\\d[\\d\\s]*(?:[.,]\\d{1,2})?\\s?[€$£]|\\b\\d[\\d\\s]*(?:[.,]\\d{1,2})?\\s?(?:EUR|USD|GBP|euros?|dollars?|livres?)\\b)/i;
 const allowedHosts = new Set(["amazon.fr", "www.amazon.fr", "link.amazon", "amzn.to"]);
 
 if (!Array.isArray(entries)) {
