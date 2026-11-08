@@ -9,7 +9,7 @@ const seenLinks = new Set();
 const expectedKeys = ["date", "titre", "lien"];
 const datePattern = /^\d{4}-\d{2}-\d{2}$/;
 const pricePattern = /(?:[€$£]\s?\d[\d\s]*(?:[.,]\d{1,2})?|\d[\d\s]*(?:[.,]\d{1,2})?\s?[€$£]|\b\d[\d\s]*(?:[.,]\d{1,2})?\s?(?:EUR|USD|GBP|euros?|dollars?|livres?)\b)/i;
-const allowedHosts = new Set(["amazon.fr", "www.amazon.fr", "link.amazon", "amzn.to"]);
+const allowedHosts = new Set(["amazon.fr", "www.amazon.fr", "link.amazon", "amzn.to", "amzn.eu"]);
 
 if (!Array.isArray(entries)) {
   console.error("Erreur : le catalogue doit être un tableau JSON.");

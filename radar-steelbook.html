@@ -113,27 +113,35 @@
   <!-- ALERTE-UNE : bloc géré à la main par Antho/Claude (alertes précommande). Ne JAMAIS supprimer ni modifier par la mise à jour automatique. Max 4 items, le plus récent en haut. Un item = <div class="al"> avec <img src="alertes/thumb-XXX.webp"> optionnel + <div class="txt"> (titre, date, bouton). -->
   <div class="une">
     <div class="al">
+      <img src="alertes/thumb-die-hard-1.webp" alt="" loading="lazy">
+      <div class="txt">
+        <div class="titre">Die Hard (Piège de cristal)</div>
+        <div class="date">Sortie le 16 décembre 2026</div>
+        <a class="bouton" href="https://amzn.eu/d/0i8QLtsu" rel="sponsored nofollow noopener">Voir sur Amazon</a>
+      </div>
+    </div>
+    <div class="al">
+      <img src="alertes/thumb-die-hard-2.webp" alt="" loading="lazy">
+      <div class="txt">
+        <div class="titre">Die Hard 2 (58 minutes pour vivre)</div>
+        <div class="date">Sortie le 13 janvier 2027</div>
+        <a class="bouton" href="https://amzn.eu/d/0aDQHm5a" rel="sponsored nofollow noopener">Voir sur Amazon</a>
+      </div>
+    </div>
+    <div class="al">
+      <img src="alertes/thumb-die-hard-3.webp" alt="" loading="lazy">
+      <div class="txt">
+        <div class="titre">Die Hard 3 (Une journée en enfer)</div>
+        <div class="date">Sortie le 27 janvier 2027</div>
+        <a class="bouton" href="https://amzn.eu/d/02vVSaEo" rel="sponsored nofollow noopener">Voir sur Amazon</a>
+      </div>
+    </div>
+    <div class="al">
       <img src="alertes/thumb-malfaisante.webp" alt="" loading="lazy">
       <div class="txt">
         <div class="titre">Malfaisante (Other Mommy)</div>
         <div class="date">Sortie le 31 décembre 2026</div>
         <a class="bouton" href="https://link.amazon/B0h69zCbF" rel="sponsored nofollow noopener">Voir sur Amazon</a>
-      </div>
-    </div>
-    <div class="al">
-      <img src="alertes/thumb-streetfighter.webp" alt="" loading="lazy">
-      <div class="txt">
-        <div class="titre">Street Fighter (2026)</div>
-        <div class="date">Sortie le 11 février 2027</div>
-        <a class="bouton" href="https://link.amazon/B07t6aBtA" rel="sponsored nofollow noopener">Voir sur Amazon</a>
-      </div>
-    </div>
-    <div class="al">
-      <img src="alertes/thumb-horreur80.webp" alt="" loading="lazy">
-      <div class="txt">
-        <div class="titre">Coffret Horreur 80's</div>
-        <div class="date">Sortie le 12 novembre 2026</div>
-        <a class="bouton" href="https://link.amazon/B02V1Qyhj" rel="sponsored nofollow noopener">Voir sur Amazon</a>
       </div>
     </div>
   </div>
@@ -279,7 +287,7 @@ document.addEventListener("click", (event) => {
   const lien = event.target.closest("a[href]");
   if (!lien || typeof gtag !== "function") return;
   const url = lien.href;
-  if (!url.includes("amazon.") && !url.includes("link.amazon/")) return;
+  if (!url.includes("amazon.") && !url.includes("link.amazon/") && !url.includes("amzn.eu/")) return;
   gtag("event", "amazon_click", {
     link_url: url,
     link_text: lien.textContent.trim(),
