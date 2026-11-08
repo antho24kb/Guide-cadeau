@@ -21,6 +21,9 @@
   html{background:var(--acier)}
   body{margin:0;color:var(--encre);font-family:Archivo,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;font-weight:500;line-height:1.45;background:var(--acier);counter-reset:sec}
   .bandeau{background:var(--encre);color:#fff;display:flex;justify-content:space-between;gap:12px;padding:9px 16px;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+  .menu{display:flex;gap:18px;align-items:center;padding:11px 16px;border-bottom:2px solid var(--encre);font:600 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;overflow:hidden;white-space:nowrap}
+  .menu a{color:var(--encre);text-decoration:none}.menu .ext{margin-left:auto;background:var(--encre);color:#fff;padding:6px 9px}
+  html{scroll-behavior:smooth}
   .bandeau b{font-family:var(--noir);font-weight:400;letter-spacing:.02em}
   .bandeau span:last-child{color:#9aa4ad}
   header,main{max-width:640px;margin:0 auto;padding-left:16px;padding-right:16px}
@@ -98,6 +101,7 @@
 </head>
 <body>
 <div class="bandeau"><span><b>4K ULTRA HD</b> + BLU-RAY</span><span>Sorties France</span></div>
+<nav class="menu" aria-label="Menu"><a href="#calendrier">Calendrier</a><a href="#bons-plans-titre">Bons plans</a><a class="ext" href="https://monbonecran.fr/" target="_blank" rel="noopener">Mon Bon Écran ↗</a></nav>
 <header>
   <h1>Radar<br>Steelbook</h1>
   <p>Toutes les sorties de steelbooks 4K, classées par date. Un seul mail par jour quand une précommande s'ouvre.</p>
@@ -135,7 +139,7 @@
   </div>
   <!-- /ALERTE-UNE -->
 
-  <div class="titre-section">Bons plans du Daron</div>
+  <div class="titre-section" id="bons-plans-titre">Bons plans du Daron</div>
   <div id="bons-plans"></div>
 
   <div class="titre-section">Alerte par mail</div>
@@ -164,7 +168,7 @@
     </div>
   </section>
 
-  <div class="titre-section">Calendrier des sorties</div>
+  <div class="titre-section" id="calendrier">Calendrier des sorties</div>
   <div class="filtres" role="group" aria-label="Filtrer le calendrier">
     <button type="button" class="on" data-f="avenir">À venir</button>
     <button type="button" data-f="dispo">Disponibles</button>
