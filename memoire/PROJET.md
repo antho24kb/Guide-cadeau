@@ -5,7 +5,7 @@ Devenir « l'alerteur de steelbook » sur TikTok : prévenir dès qu'un steelboo
 
 ## Marques et canaux
 - Chaîne TikTok : **LE DARON** (100 % steelbooks). Sur les slides et vidéos, écrire « LE DARON ».
-- Site : https://antho24kb.github.io/Guide-cadeau/ (GitHub Pages, dépôt public `antho24kb/guide-cadeau`)
+- Site : https://antho24kb.github.io/RadarSteelbook/ (GitHub Pages, dépôt public `antho24kb/RadarSteelbook`)
 - Page principale : `radar-steelbook.html` (design sombre « étiquette vidéo », polices locales dans `fonts/`)
 - Page liste simple : `steelbook.html` (fond crème, steelbooks 4K avec logo Amazon actif)
 - Autres pages : `liste.html`, `merci-liste.html`, `psycho.html`, `index.html` (guide cadeaux), flux `feed.xml`

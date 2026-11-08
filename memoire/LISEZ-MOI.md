@@ -30,4 +30,4 @@ Installer l’application officielle [Claude pour GitHub](https://github.com/app
 4. Toujours récupérer la dernière version du dépôt avant de modifier un fichier.
 5. **Le dépôt est public** : jamais de mot de passe, clé, e-mail, chiffre d'affaires ni donnée personnelle dans ce dossier.
 
-Lien direct pour ChatGPT (lecture brute) : https://raw.githubusercontent.com/antho24kb/guide-cadeau/main/memoire/LISEZ-MOI.md
+Lien direct pour ChatGPT (lecture brute) : https://raw.githubusercontent.com/antho24kb/RadarSteelbook/main/memoire/LISEZ-MOI.md
