@@ -81,6 +81,7 @@
   .dispo{flex:none;font-family:var(--mono);font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--bleu);border:2px solid var(--bleu);padding:6px 9px;white-space:nowrap}
   .dispo::before{content:"\2713 "}
   .vide{font-family:var(--mono);font-size:13px;padding:18px 0}
+  .vide{border:2px dashed var(--encre);padding:16px 14px;font-family:var(--mono);font-size:12px;color:var(--gris)}
   footer{max-width:640px;margin:34px auto 0;padding:14px 16px 46px;border-top:4px solid var(--encre);font-family:var(--mono);font-size:11px;color:var(--gris);line-height:1.6}
   @media(max-width:380px){.une .al img{width:50px}.sb a.bouton{padding:8px 9px}}
 </style>
@@ -133,6 +134,9 @@
   </div>
   <!-- /ALERTE-UNE -->
 
+  <div class="titre-section">Bons plans du Daron</div>
+  <div id="bons-plans"></div>
+
   <div class="titre-section">Alerte par mail</div>
   <section class="mail alertes">
     <div class="mail-tete">
@@ -168,7 +172,7 @@
 
 </main>
 <footer>
-  En tant que Partenaire Amazon, je réalise un bénéfice sur les achats remplissant les conditions requises. Les prix et la disponibilité sont ceux affichés sur Amazon.
+  En tant que Partenaire Amazon, je réalise un bénéfice sur les achats remplissant les conditions requises. Les prix et la disponibilité sont ceux affichés sur Amazon. Les liens des bons plans sont des liens affiliés.
 </footer>
 
 <script>
@@ -281,6 +285,21 @@ document.addEventListener("click", (event) => {
 });
 
 chargerSteelbooks();
+</script>
+<script>
+/* BONS PLANS DU DARON : pour en ajouter un, copie une ligne en haut (le plus récent d'abord). Date AAAA-MM-JJ, titre, lien Amazon avec le tag antho24kb-21. */
+const BONS_PLANS = [
+];
+(function(){
+  const L=document.getElementById("bons-plans");
+  if(!BONS_PLANS.length){const d=document.createElement("div");d.className="vide";d.textContent="Les premiers bons plans arrivent très vite.";L.appendChild(d);return}
+  BONS_PLANS.forEach(p=>{const d=new Date(p.date+"T12:00:00");
+    const el=document.createElement("div");el.className="sb";
+    const j=document.createElement("div");j.className="jour";const b=document.createElement("b");b.textContent=d.getDate();const sp=document.createElement("span");sp.textContent=d.toLocaleDateString("fr-FR",{month:"short"}).replace(".","");j.append(b,sp);
+    const t=document.createElement("div");t.className="txt";const ti=document.createElement("div");ti.className="titre";ti.textContent=p.titre;t.appendChild(ti);
+    const a=document.createElement("a");a.className="bouton";a.href=p.lien;a.rel="sponsored nofollow noopener";a.textContent="Voir";
+    el.append(j,t,a);L.appendChild(el)});
+})();
 </script>
 </body>
 </html>
