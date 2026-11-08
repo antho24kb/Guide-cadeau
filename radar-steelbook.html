@@ -86,6 +86,13 @@
 </style>
 <link rel="alternate" type="application/rss+xml" title="Alertes steelbook" href="feed.xml">
 <script data-goatcounter="https://radarsteelbook.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-F6GG3ZWCWC"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-F6GG3ZWCWC");
+</script>
 </head>
 <body>
 <div class="bandeau"><span><b>4K ULTRA HD</b> + BLU-RAY</span><span>Sorties France</span></div>
@@ -261,6 +268,18 @@ document.querySelectorAll(".filtres button").forEach(btn => {
     afficher(btn.dataset.f);
   });
 });
+document.addEventListener("click", (event) => {
+  const lien = event.target.closest("a[href]");
+  if (!lien || typeof gtag !== "function") return;
+  const url = lien.href;
+  if (!url.includes("amazon.") && !url.includes("link.amazon/")) return;
+  gtag("event", "amazon_click", {
+    link_url: url,
+    link_text: lien.textContent.trim(),
+    page_location: window.location.href
+  });
+});
+
 chargerSteelbooks();
 </script>
 </body>
