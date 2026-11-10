@@ -7,3 +7,4 @@
 - 2026-11-08 — Claude : alerte Die Hard 1/2/3 (16/12/2026, 13/01/2027, 27/01/2027) : bloc ALERTE-UNE (4 max, Street Fighter et Coffret Horreur retirés du bloc, restent au calendrier), catalogue, feed.xml, liens amzn.eu autorisés et suivis ; vidéo unique des 3 steelbooks.
 - 2026-11-08 — Claude : dépôt renommé Guide-cadeau → RadarSteelbook ; tous les liens (feed.xml, canonicals, mails d'alerte, mémoire) mis à jour. Nouvelle adresse du site : https://antho24kb.github.io/RadarSteelbook/
 - 2026-11-09 — Claude : alerte House of the Dragon S3 steelbook 4K (sortie 02/12/2026) : bloc ALERTE-UNE (Malfaisante retirée du bloc, reste au calendrier), catalogue, feed.xml, vidéo TikTok ; bon plan du 9/11 (Art of Cinematic Storytelling) déjà dans Bons plans.
+- 2026-11-10 — Claude : bon plan du jour « Machine à pop-corn » ajouté dans Bons plans du Daron (lien affilié antho24kb-21) ; carrousel sorties cinéma 11/11 livré.
