@@ -9,3 +9,4 @@
 - 2026-11-09 — Claude : alerte House of the Dragon S3 steelbook 4K (sortie 02/12/2026) : bloc ALERTE-UNE (Malfaisante retirée du bloc, reste au calendrier), catalogue, feed.xml, vidéo TikTok ; bon plan du 9/11 (Art of Cinematic Storytelling) déjà dans Bons plans.
 - 2026-11-10 — Claude : bon plan du jour « Machine à pop-corn » ajouté dans Bons plans du Daron (lien affilié antho24kb-21) ; carrousel sorties cinéma 11/11 livré.
 - 2026-11-11 — Claude : alerte The Odyssey steelbook 4K (retour en stock, 18/11/2026) : bloc ALERTE-UNE (Die Hard 3 retiré du bloc, reste au calendrier), catalogue, feed.xml, vidéo TikTok.
+- 2026-11-12 — Claude : alerte précommande Leprechaun 1 & 2 steelbook 4K (sortie 24/02/2027, source chocobonplan) : ALERTE-UNE (Die Hard 2 sorti du bloc), catalogue, feed.xml, vidéo TikTok.
