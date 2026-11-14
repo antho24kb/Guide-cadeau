@@ -12,3 +12,4 @@
 - 2026-11-12 — Claude : alerte précommande Leprechaun 1 & 2 steelbook 4K (sortie 24/02/2027, source chocobonplan) : ALERTE-UNE (Die Hard 2 sorti du bloc), catalogue, feed.xml, vidéo TikTok.
 - 2026-11-13 — Claude : bon plan ajouté sur Radar Steelbook « Câble HDMI 2.1 fibre optique 8K (10 m) » (lien affilié B0HGXK3JSC).
 - 2026-11-14 — Antho : nouveau rendez-vous du samedi « La Question du Daron » ; « Le saviez-vous ? » à déplacer.
+- 2026-11-14 — Antho : « Le saviez-vous ? » déplacé au samedi 12h00.
