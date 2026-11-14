@@ -13,3 +13,4 @@
 - 2026-11-13 — Claude : bon plan ajouté sur Radar Steelbook « Câble HDMI 2.1 fibre optique 8K (10 m) » (lien affilié B0HGXK3JSC).
 - 2026-11-14 — Antho : nouveau rendez-vous du samedi « La Question du Daron » ; « Le saviez-vous ? » à déplacer.
 - 2026-11-14 — Antho : « Le saviez-vous ? » déplacé au samedi 12h00.
+- 2026-11-14 — Antho (correction) : samedi 12h La Question du Daron, samedi 19h Le saviez-vous ?

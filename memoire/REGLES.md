@@ -24,7 +24,7 @@
 - Mobile d'abord (iPhone) : tout visible sans défiler horizontalement, largeur de test 390 px.
 
 ## Calendrier TikTok LE DARON (mis à jour le 14 nov. 2026)
-- 1 publication par jour à 19h00 : lun Sorties de la semaine (carrousel) · mar Ma collection (Antho) · mer Sortie du jour (carrousel) · jeu Unboxing (Antho) · ven Le Duel (vidéo) · **sam 12h Le saviez-vous ? + sam 19h LA QUESTION DU DARON 📺 (carrousel communautaire)** · dim Bon plan du Daron (carrousel).
-- « Le saviez-vous ? » passe au samedi 12h00 (2e publication du samedi, contenu conservé).
+- 1 publication par jour à 19h00 : lun Sorties de la semaine (carrousel) · mar Ma collection (Antho) · mer Sortie du jour (carrousel) · jeu Unboxing (Antho) · ven Le Duel (vidéo) · **sam 12h LA QUESTION DU DARON 📺 (carrousel communautaire) + sam 19h Le saviez-vous ?** · dim Bon plan du Daron (carrousel).
+- Samedi : La Question du Daron à 12h00, « Le saviez-vous ? » reste à 19h00.
 - La Question du Daron : question forte dès la slide 1, but = commentaires ; charte LE DARON ; format 1080×1440 (TikTok coupe le 1080×1920 en carrousel photo) ; MonBonEcran.fr seulement pour les sujets télé / image ; thèmes en rotation, préparés dans le planning mensuel.
 - Thèmes : télé · lecteur Blu-ray 4K · OLED ou Mini LED · Dolby Vision ou HDR10 · réglages optimisés · système audio · taille d'écran · dans le noir ou avec lumière d'ambiance (Ambilight = Philips uniquement).
